@@ -1,53 +1,71 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synthex</title>
-    <style>
-        body {
-            background-color: #121212;
-            color: white;
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .discord-button {
-            background-color: #7289da;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: filter 1s ease;
-        }
-        
-        .discord-button:hover {
-            filter: brightness(1.2);
-        }
-        
-        .message {
-            margin-top: 50px;
-            font-size: 18px;
-            line-height: 1.5;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Sidebar</title>
+  <style>
+    .sidebar {
+      width: 200px;
+      height: 100vh;
+      background-color: #f0f0f0;
+      border-right: 1px solid #ccc;
+      float: left;
+    }
+
+    .item {
+      width: 100px;
+      height: 50px;
+      background-color: #ccc;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .item.draggable {
+      cursor: move;
+    }
+
+    .item:hover {
+      background-color: #aaa;
+    }
+  </style>
 </head>
 <body>
-    <div class="message">
-        <p>Hey there! I appreciate you coming and using Synthex. Unfortunately, due to abuse, this link has been shut down.</p>
-        <p>Do not worry though! You can find and make more in our Discord. Go home or login through another known link to join! Thanks! ~cooper</p>
-    </div>
-    <a href="https://dsc.gg/synthex" target="_blank" rel="noopener noreferrer" class="discord-button" onclick="window.close();">
-        <span>Discord</span>
-        <img src="800px-Discord_white_D.svg.png" alt="Discord Logo" style="width: 20px; height: 20px; margin-left: 5px;">
-    </a>
+  <div class="sidebar">
+    <div class="item draggable" draggable="true">Item 1</div>
+    <div class="item draggable" draggable="true">Item 2</div>
+    <div class="item draggable" draggable="true">Item 3</div>
+    <!-- Add more items here -->
+  </div>
+
+  <script>
+    let draggedItem = null;
+
+    document.addEventListener('dragstart', function(event) {
+      draggedItem = event.target;
+    });
+
+    document.addEventListener('dragover', function(event) {
+      event.preventDefault();
+    });
+
+    document.addEventListener('drop', function(event) {
+      if (draggedItem) {
+        const newItem = draggedItem.cloneNode(true);
+        newItem.classList.remove('draggable');
+        newItem.removeAttribute('draggable');
+        newItem.textContent = ''; // Clear text content before making the HTTP request
+        draggedItem.parentElement.appendChild(newItem);
+        draggedItem = null;
+
+        // Perform HTTP request here and set the text content of newItem based on the response
+        // Example:
+        // fetch('your_url_here')
+        //   .then(response => response.text())
+        //   .then(data => newItem.textContent = data)
+        //   .catch(error => console.error('Error:', error));
+      }
+    });
+  </script>
 </body>
 </html>
