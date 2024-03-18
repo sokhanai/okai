@@ -1,71 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Sidebar</title>
-  <style>
-    .sidebar {
-      width: 200px;
-      height: 100vh;
-      background-color: #f0f0f0;
-      border-right: 1px solid #ccc;
-      float: left;
-    }
-
-    .item {
-      width: 100px;
-      height: 50px;
-      background-color: #ccc;
-      margin: 10px;
-      cursor: pointer;
-    }
-
-    .item.draggable {
-      cursor: move;
-    }
-
-    .item:hover {
-      background-color: #aaa;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Site</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #4a00e0, #8e2de2);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 50px;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .button {
+            background-color: #7289da;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #677bc4;
+        }
+    </style>
 </head>
 <body>
-  <div class="sidebar">
-    <div class="item draggable" draggable="true">Item 1</div>
-    <div class="item draggable" draggable="true">Item 2</div>
-    <div class="item draggable" draggable="true">Item 3</div>
-    <!-- Add more items here -->
-  </div>
-
-  <script>
-    let draggedItem = null;
-
-    document.addEventListener('dragstart', function(event) {
-      draggedItem = event.target;
-    });
-
-    document.addEventListener('dragover', function(event) {
-      event.preventDefault();
-    });
-
-    document.addEventListener('drop', function(event) {
-      if (draggedItem) {
-        const newItem = draggedItem.cloneNode(true);
-        newItem.classList.remove('draggable');
-        newItem.removeAttribute('draggable');
-        newItem.textContent = ''; // Clear text content before making the HTTP request
-        draggedItem.parentElement.appendChild(newItem);
-        draggedItem = null;
-
-        // Perform HTTP request here and set the text content of newItem based on the response
-        // Example:
-        // fetch('your_url_here')
-        //   .then(response => response.text())
-        //   .then(data => newItem.textContent = data)
-        //   .catch(error => console.error('Error:', error));
-      }
-    });
-  </script>
+    <div class="container">
+        <h1>Creating enjoyable, quality content. <strong>Free.</strong></h1>
+        <a class="button" href="https://discord.gg/7QXAS4wkhX" target="_blank">Discord</a>
+    </div>
 </body>
 </html>
