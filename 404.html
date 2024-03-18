@@ -9,15 +9,15 @@
         function extractIDFromURL() {
             var url = window.location.href;
             var parts = url.split('/');
-            // Assuming the ID is the third part of the URL
-            var id = parts[parts.length - 2];
+            // Assuming the ID is the fourth part of the URL
+            var id = parts[parts.length - 1];
             return id;
         }
 
         // Once the page is loaded, extract the ID and do something with it
         window.onload = function() {
             var url = window.location.href;
-            if(url.includes("/join/")) {
+            if(url.includes("/join/id/")) {
                 var id = extractIDFromURL();
                 // Do something with the extracted ID
                 console.log("ID:", id);
