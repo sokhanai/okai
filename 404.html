@@ -4,6 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Launcher | CX Games</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #4a00e0, #8e2de2);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        #launcher {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #launcher h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        #launcher img {
+            width: 200px;
+            height: auto;
+        }
+        #default {
+            display: none;
+        }
+    </style>
     <script>
         // Function to extract ID from URL
         function extractIDFromURL() {
@@ -17,7 +46,7 @@
         // Once the page is loaded, extract the ID and do something with it
         window.onload = function() {
             var url = window.location.href;
-            if(url.includes("/join/id/")) {
+            if(url.includes("/join/")) {
                 var id = extractIDFromURL();
                 // Do something with the extracted ID
                 console.log("ID:", id);
@@ -25,21 +54,16 @@
                 window.location.href = "https://www.roblox.com/games/" + id;
             } else {
                 // If it's not the join page, display the original content
-                document.getElementById("launcher").style.display = "none";
-                document.getElementById("default").style.display = "block";
+                document.getElementById("launcher").style.display = "flex";
+                document.getElementById("default").style.display = "none";
             }
         };
     </script>
-    <style>
-        #default {
-            display: none;
-        }
-    </style>
 </head>
 <body>
     <div id="launcher">
         <h1>Launching...</h1>
-        <p>We're getting your world ready.</p>
+        <img src="IMG_5120.gif" alt="Launch Animation">
     </div>
     <div id="default">
         <h1>404 - Page Not Found</h1>
