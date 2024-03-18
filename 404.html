@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launcher | CX Games</title>
+    <script>
+        // Function to extract ID from URL
+        function extractIDFromURL() {
+            var url = window.location.href;
+            var parts = url.split('/');
+            // Assuming the ID is the third part of the URL
+            var id = parts[parts.length - 2];
+            return id;
+        }
+
+        // Once the page is loaded, extract the ID and do something with it
+        window.onload = function() {
+            var url = window.location.href;
+            if(url.includes("/join/")) {
+                var id = extractIDFromURL();
+                // Do something with the extracted ID
+                console.log("ID:", id);
+                // Redirect the user to the Roblox game URL with the extracted ID
+                window.location.href = "https://www.roblox.com/games/" + id;
+            } else {
+                // If it's not the join page, display the original content
+                document.getElementById("launcher").style.display = "none";
+                document.getElementById("default").style.display = "block";
+            }
+        };
+    </script>
+    <style>
+        #default {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="launcher">
+        <h1>Launching...</h1>
+        <p>We're getting your world ready.</p>
+    </div>
+    <div id="default">
+        <h1>404 - Page Not Found</h1>
+        <p>We couldn't find the page you were looking for.</p>
+    </div>
+</body>
+</html>
