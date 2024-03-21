@@ -39,7 +39,7 @@
             var url = window.location.href;
             var parts = url.split('/');
             // Assuming the ID is the fourth part of the URL
-            var id = parts[parts.length - 1];
+            var id = parts[parts.length - 2];
             return id;
         }
 
@@ -51,11 +51,7 @@
                 // Do something with the extracted ID
                 console.log("ID:", id);
                 // Redirect the user to the Roblox game URL with the extracted ID
-                window.location.href = "https://www.roblox.com/games/" + id;
-            } else if (url.includes("/request-error")) {
-                // If it's a request error, display the error message
-                document.getElementById("launcher").style.display = "flex";
-                document.getElementById("launcher").innerHTML = "<h1>This ID does not exist</h1><p>We couldn't find the game you were looking for.</p>";
+                window.location.href = "roblox://placeId=" + id;
             } else {
                 // If it's not the join page, display the original content
                 document.getElementById("launcher").style.display = "flex";
