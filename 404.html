@@ -51,6 +51,7 @@
                 // Do something with the extracted ID
                 console.log("ID:", id);
                 // Redirect the user to the Roblox game URL with the extracted ID
+                document.getElementById("launcher").innerHTML = "<h1>Launched</h1>";
                 window.location.href = "roblox://placeId=" + id;
             } else {
                 // If it's not the join page, display the original content
